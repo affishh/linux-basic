@@ -1,0 +1,48 @@
+1: Create directory /tmp/bg as root user and create files inside it.
+
+ Step2: “abhi” should be the owner of the directory. He should be able to create files and delete files inside 
+
+ the directory and also he should be able to add contents to all files inside the directory.
+
+soln:
+
+step 1 :
+afrin@LAPTOP-DILC0HD8:/$ sudo mkdir /tmp/bg
+afrin@LAPTOP-DILC0HD8:/$ sudo touch /tmp/bg/file1 /tmp/bg/file2 /tmp/bg/file3
+afrin@LAPTOP-DILC0HD8:/$ ls -ld /tmp/bg
+drwxr-xr-x 2 root root 4096 May  2 11:02 /tmp/bg
+
+step2 
+Assigning ownership and permissions to user abhi
+afrin@LAPTOP-DILC0HD8:/$ sudo chown -R abhi:abhi /tmp/bg
+afrin@LAPTOP-DILC0HD8:/$ ls -ld /tmp/bg
+drwxr-xr-x 2 abhi abhi 4096 May  2 11:02 /tmp/bg
+afrin@LAPTOP-DILC0HD8:/$ sudo chmod u+rwx /tmp/bg
+afrin@LAPTOP-DILC0HD8:/$
+
+settinng the directory permissions
+afrin@LAPTOP-DILC0HD8:/$ sudo chmod u+rw /tmp/bg
+
+Modifying the files in /tmp/bg directory where abhi as the owner:
+abhi@LAPTOP-DILC0HD8:/tmp/bg$ ls
+file1  file2  file3
+abhi@LAPTOP-DILC0HD8:/tmp/bg$ cat > file1
+Hi this is a sample file1
+^Z
+[1]+  Stopped                 cat > file1
+abhi@LAPTOP-DILC0HD8:/tmp/bg$ cat file1
+Hi this is a sample file1
+abhi@LAPTOP-DILC0HD8:/tmp/bg$ cat > file2
+Hi this is is sample file2
+^Z
+[2]+  Stopped                 cat > file2
+abhi@LAPTOP-DILC0HD8:/tmp/bg$ cat file1
+Hi this is a sample file1
+
+abhi@LAPTOP-DILC0HD8:/tmp/bg$ rm file3
+abhi@LAPTOP-DILC0HD8:/tmp/bg$ ls
+file1  file2
+abhi@LAPTOP-DILC0HD8:/tmp/bg$ touch f3
+abhi@LAPTOP-DILC0HD8:/tmp/bg$ ls
+f3  file1  file2
+abhi@LAPTOP-DILC0HD8:/tmp/bg$

@@ -1,0 +1,36 @@
+What is the difference between Hard Link & Soft Link?
+sol : Hard link is a direct reference to the inode of a file. Its an another name for the same file on the disk.
+Soft link is a reference to another file or directory. Its a  separate file that contains the path to original file.
+
+Differences:
+** Inode : Soft link have their own inode, while hard links share the same inode as the original file.
+** File deletion: If the original file is deleted, a soft link becomes invalid, while a hard link remains valid
+** 
+** File system: Soft links can span across file systems, while hard links are limited to the same file system.
+** Directory linking Soft links can link to directories, while hard links typically cant 
+
+Commands - soft link : ln -s org_file soft_link
+
+afrin@LAPTOP-DILC0HD8:/home$ ln -s /home/afrin/assignment1 soft_link
+ln: failed to create symbolic link 'soft_link': Permission denied
+afrin@LAPTOP-DILC0HD8:/home$ sudo ln -s /home/afrin/assignment1 soft_link
+[sudo] password for afrin:
+afrin@LAPTOP-DILC0HD8:/home$ ls
+afrin  linux  soft_link
+afrin@LAPTOP-DILC0HD8:/home$ cat soft_link
+cat: soft_link: Is a directory
+afrin@LAPTOP-DILC0HD8:/home$ cd soft_link
+afrin@LAPTOP-DILC0HD8:/home/soft_link$ ls
+q1  q2
+afrin@LAPTOP-DILC0HD8:/home/soft_link$
+
+Hard link : ln org_file hard_link
+example
+
+afrin@LAPTOP-DILC0HD8:~$ ln /home/afrin/assignment1/q1 hard_link
+afrin@LAPTOP-DILC0HD8:~$ ls
+assignment1  fruits  hard_link
+afrin@LAPTOP-DILC0HD8:~$ cat hard_link
+What is Linux?
+sol: Linux is a open source operating system that manages computer software and hardware resources.
+It was created by Linus TOrvalds in 1991, linux was designed to be similar to UNIX but has evolved to run on variety of devices such as computers, servers, mobile phones and other devices.

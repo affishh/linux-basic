@@ -1,0 +1,8 @@
+What is a Kernel in Linux?
+The linux kernel is the core part of the linux operating system. It is responsible for managing:
+** Hardware resources - CPU, memory, storage and peripherals
+**Process management - Creating, scheduling, and terminating processes
+**
+**Memory management - Managing virtual and physical memory.
+**Networking - Managing network interfaces and communication.
+The Linux kernel is the foundation of the linux operating system, providing a stable and efficient platform for runnign applications and services.

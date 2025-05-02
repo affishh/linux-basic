@@ -1,0 +1,4 @@
+What is Linux?
+sol: Linux is a open source operating system that manages computer software and hardware resources.
+It was created by Linus TOrvalds in 1991, linux was designed to be similar to UNIX but has evolved to run on variety of devices such as computers, servers, mobile phones and other devices.
+It relies heavily on its kernel for its functionality, in an OS kernal is a computer program that allows user to contro^the system hardware and software.Linux OS uses various components such as system libraries and space utilities, but they all rely on kernal to communicate and receive commands from the user.

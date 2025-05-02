@@ -1,0 +1,33 @@
+You suspect that a particular process is consuming excessive CPU resources on your Linux server. How
+would you identify and terminate this process?
+
+soln :
+Using top command we can identify process consuming excessive CPU resources.
+
+afrin@LAPTOP-DILC0HD8:~/assignment1$ top
+top - 11:25:13 up 47 min,  2 users,  load average: 0.00, 0.00, 0.00
+Tasks:  44 total,   1 running,  37 sleeping,   6 stopped,   0 zombie
+%Cpu(s):  0.0 us,  0.0 sy,  0.0 ni,100.0 id,  0.0 wa,  0.0 hi,  0.0 si
+MiB Mem :   3857.6 total,   3324.4 free,    532.8 used,    153.0 buff/
+MiB Swap:   1024.0 total,   1024.0 free,      0.0 used.   3324.8 avail
+
+    PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+
+    649 afrin     20   0    9272   5356   3212 R   0.3   0.1   0:00.02
+      1 root      20   0   21588  13004   9604 S   0.0   0.3   0:00.54
+
+* We can verify with ps command
+afrin@LAPTOP-DILC0HD8:~/assignment1$ ps -eo pid,ppid,cmd,%mem,%cpu --sort=-%cpu | head
+    PID    PPID CMD                         %MEM %CPU
+    115       1 snapfuse /var/lib/snapd/sna  0.4  0.1
+      1       0 /sbin/init                   0.3  0.0
+    191       1 /usr/lib/snapd/snapd         1.0  0.0
+    649     611 top                          0.1  0.0
+    348     347 /init                        0.0  0.0
+    610     592 su - afrin                   0.1  0.0
+     52       1 /usr/lib/systemd/systemd-jo  0.5  0.0
+     96       1 /usr/lib/systemd/systemd-ud  0.1  0.0
+    211       1 /usr/sbin/rsyslogd -n -iNON  0.1  0.0
+
+*We can now use kill command to kill the process using process id as parameter
+example - kill 115
+It forcefully terminates the process with the process id 115

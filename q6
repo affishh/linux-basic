@@ -1,0 +1,53 @@
+step1: Create user p1
+
+ Step2: He should be part of 3 groups g1,g2,g3.
+
+ Step3: whenever he creates a file automatically in the group section of file grp g1 should come.
+
+----
+sol : 
+
+step 1 -------
+afrin@LAPTOP-DILC0HD8:~/assignment1$ sudo adduser p1
+[sudo] password for afrin:
+Sorry, try again.
+[sudo] password for afrin:
+info: Adding user `p1' ...
+info: Selecting UID/GID from range 1000 to 59999 ...
+info: Adding new group `p1' (1001) ...
+info: Adding new user `p1' (1001) with group `p1 (1001)' ...
+info: Creating home directory `/home/p1' ...
+info: Copying files from `/etc/skel' ...
+New password:
+Retype new password:
+passwd: password updated successfully
+Changing the user information for p1
+Enter the new value, or press ENTER for the default
+        Full Name []: p1
+        Room Number []:
+        Work Phone []:
+        Home Phone []:
+        Other []:
+Is the information correct? [Y/n] y
+info: Adding new user `p1' to supplemental / extra groups `users' ...
+info: Adding user `p1' to group `users' ...
+
+
+step2 -------
+
+afrin@LAPTOP-DILC0HD8:~/assignment1$ sudo groupadd g1
+afrin@LAPTOP-DILC0HD8:~/assignment1$ sudo groupadd g2
+afrin@LAPTOP-DILC0HD8:~/assignment1$ sudo groupadd g3
+afrin@LAPTOP-DILC0HD8:~/assignment1$ sudo usermod -aG g1,g2,g3 p1
+afrin@LAPTOP-DILC0HD8:~/assignment1$ sudo usermod -g g1 p1
+afrin@LAPTOP-DILC0HD8:~/assignment1$ id p1
+uid=1001(p1) gid=1007(g1) groups=1007(g1),100(users),1008(g2),1009(g3)
+
+step3 -------
+
+p1@LAPTOP-DILC0HD8:~$ touch testfile
+p1@LAPTOP-DILC0HD8:~$ ls -l testfile
+-rw-r--r-- 1 p1 g1 0 May  1 17:24 testfile
+p1@LAPTOP-DILC0HD8:~$ touch testfile2
+p1@LAPTOP-DILC0HD8:~$ ls -l testfile2
+-rw-r--r-- 1 p1 g1 0 May  1 17:24 testfile2
